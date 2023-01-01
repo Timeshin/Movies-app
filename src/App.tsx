@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from 'react'
+import { observer } from 'mobx-react-lite'
+import { MainPage } from 'layouts'
+import MoviesStore from 'store/moviesStore'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { Loader, MoviesList, SearchBar } from 'components'
 
-export default App;
+const App = observer(() => {
+	const { moviesData, getMoviesStatus, moviesFilterValue, filterMoviesStatus } = MoviesStore
+
+	useEffect(() => {
+		MoviesStore.getMovies()
+	}, [])
+
+	if (getMoviesStatus === 'loading') return <Loader />
+
+	return (
+		<MainPage imageUrls={moviesData?.backgrounds.map(({ url }) => url) || []}>
+			<SearchBar />
+			{!moviesFilterValue && filterMoviesStatus !== 'loading' && <h2 className='text-[32px] font-bold'>in the spotlight</h2>}
+			<MoviesList />
+		</MainPage>
+	)
+})
+
+export default App
