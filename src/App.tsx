@@ -14,6 +14,13 @@ const App = observer(() => {
 
 	if (getMoviesStatus === 'loading') return <Loader />
 
+	if (getMoviesStatus === 'error')
+		return (
+			<div className='w-screen h-screen flex items-center justify-center'>
+				<h1 className='text-red-600 text-5xl'>Something went wrong :(</h1>
+			</div>
+		)
+
 	return (
 		<MainPage imageUrls={moviesData?.backgrounds.map(({ url }) => url) || []}>
 			<SearchBar />
