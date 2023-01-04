@@ -47,7 +47,7 @@ const MovieItem: FC<IMovieItem> = ({
 				{[keyframe, poster].map((imageUrl) => (
 					<img
 						key={imageUrl}
-						src={`${require(`assets/images/${imageUrl}`)}`}
+						src={`${require(`../../../api/${imageUrl}`)}`}
 						className={`absolute w-full h-full top-0 left-0 ${currentImage === imageUrl ? 'animate-show' : 'animate-hide'}`}
 						alt='posterBg'
 					/>

@@ -22,7 +22,7 @@ const App = observer(() => {
 		)
 
 	return (
-		<MainPage imageUrls={moviesData?.backgrounds.map(({ url }) => url) || []}>
+		<MainPage imageUrls={moviesData?.backgrounds?.map(({ url }) => url) || []}>
 			<SearchBar />
 			{!moviesFilterValue && filterMoviesStatus !== 'loading' && <h2 className='text-[32px] font-bold'>in the spotlight</h2>}
 			<MoviesList />

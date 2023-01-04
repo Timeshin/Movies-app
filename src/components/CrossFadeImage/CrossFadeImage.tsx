@@ -13,7 +13,7 @@ const CrossFadeImage: FC<ICrossFadeImage> = ({ imageUrls, className, ...props })
 			{imageUrls.map((imageUrl) => (
 				<img
 					key={imageUrl}
-					src={require(`assets/images/${imageUrl}`)}
+					src={require(`../../../api/${imageUrl}`)}
 					alt='background'
 					className={`top-0 left-0 object-cover h-full w-full absolute ${
 						currentImageUrl === imageUrl ? 'animate-show' : 'animate-hide'
