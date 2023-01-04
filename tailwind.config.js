@@ -9,7 +9,7 @@ module.exports = {
 			}
 		},
 		fontFamily: {
-			SourceSans: ['Source Sans Pro', 'sans-serif']
+			roboto: ['Roboto']
 		},
 		animation: {
 			show: 'show 1s linear forwards',
